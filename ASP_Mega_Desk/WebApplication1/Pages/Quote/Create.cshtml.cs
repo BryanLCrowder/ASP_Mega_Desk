@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication1.Models;
 
-namespace WebApplication1.Pages.Desk
+namespace WebApplication1.Pages.Quote
 {
     public class CreateModel : PageModel
     {
@@ -16,6 +16,8 @@ namespace WebApplication1.Pages.Desk
         public CreateModel(WebApplication1.Models.WebApplication1Context context)
         {
             _context = context;
+
+
         }
 
         public IActionResult OnGet()
@@ -25,6 +27,7 @@ namespace WebApplication1.Pages.Desk
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
+        public Desk Desk { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -37,6 +40,7 @@ namespace WebApplication1.Pages.Desk
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+
         }
     }
 }

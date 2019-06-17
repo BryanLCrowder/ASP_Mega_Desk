@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApplication1.Pages.Desk.CreateModel
+@model WebApplication1.Pages.Quote.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -14,9 +14,9 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DeskQuote.CustomerName" class="control-label"></label>
-                <input asp-for="DeskQuote.CustomerName" class="form-control" />
-                <span asp-validation-for="DeskQuote.CustomerName" class="text-danger"></span>
+                <label asp-for="DeskQuote.CustomersName" class="control-label"></label>
+                <input asp-for="DeskQuote.CustomersName" class="form-control" />
+                <span asp-validation-for="DeskQuote.CustomersName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.ShippingDays" class="control-label"></label>
@@ -29,24 +29,24 @@
                 <span asp-validation-for="DeskQuote.QuoteDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Quote" class="control-label"></label>
-                <input asp-for="DeskQuote.Quote" class="form-control" />
-                <span asp-validation-for="DeskQuote.Quote" class="text-danger"></span>
+                <label asp-for="Desk.Material" class="control-label"></label>
+                <input asp-for="Desk.Material" class="form-control" />
+                <span asp-validation-for="Desk.Material" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.ShippingCost" class="control-label"></label>
-                <input asp-for="DeskQuote.ShippingCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.ShippingCost" class="text-danger"></span>
+                <label asp-for="Desk.WidthUpDown" class="control-label"></label>
+                <input asp-for="Desk.WidthUpDown" class="form-control" />
+                <span asp-validation-for="Desk.WidthUpDown" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.StructureCost" class="control-label"></label>
-                <input asp-for="DeskQuote.StructureCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.StructureCost" class="text-danger"></span>
+                <label asp-for="Desk.HeightUpDown" class="control-label"></label>
+                <input asp-for="Desk.HeightUpDown" class="form-control" />
+                <span asp-validation-for="Desk.HeightUpDown" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.SurfaceCost" class="control-label"></label>
-                <input asp-for="DeskQuote.SurfaceCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.SurfaceCost" class="text-danger"></span>
+                <label asp-for="Desk.NumDrawers" class="control-label"></label>
+                <input asp-for="Desk.NumDrawers" class="form-control" />
+                <span asp-validation-for="Desk.NumDrawers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

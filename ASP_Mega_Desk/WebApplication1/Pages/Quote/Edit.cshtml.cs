@@ -4,22 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
-namespace WebApplication1.Pages.Desk
+namespace WebApplication1.Pages.Quote
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly WebApplication1.Models.WebApplication1Context _context;
 
-        public DeleteModel(WebApplication1.Models.WebApplication1Context context)
+        public EditModel(WebApplication1.Models.WebApplication1Context context)
         {
             _context = context;
         }
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
+        public Desk Desk { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -37,22 +39,37 @@ namespace WebApplication1.Pages.Desk
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            DeskQuote = await _context.DeskQuote.FindAsync(id);
+            _context.Attach(DeskQuote).State = EntityState.Modified;
 
-            if (DeskQuote != null)
+            try
             {
-                _context.DeskQuote.Remove(DeskQuote);
                 await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DeskQuoteExists(DeskQuote.ID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
             return RedirectToPage("./Index");
+        }
+
+        private bool DeskQuoteExists(int id)
+        {
+            return _context.DeskQuote.Any(e => e.ID == id);
         }
     }
 }

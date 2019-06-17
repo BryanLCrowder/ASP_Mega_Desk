@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApplication1.Pages.Desk.IndexModel
+@model WebApplication1.Pages.Quote.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
+                @Html.DisplayNameFor(model => model.DeskQuote[0].CustomersName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].ShippingDays)
@@ -24,24 +24,14 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].Quote)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].ShippingCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].StructureCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceCost)
-            </th>
-            <th></th>
+            </th>           
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.DeskQuote) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
+                @Html.DisplayFor(modelItem => item.CustomersName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShippingDays)
@@ -51,15 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quote)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippingCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StructureCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SurfaceCost)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApplication1.Pages.Desk.DeleteModel
+@model WebApplication1.Pages.Quote.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -13,10 +13,10 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DeskQuote.CustomerName)
+            @Html.DisplayNameFor(model => model.DeskQuote.CustomersName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeskQuote.CustomerName)
+            @Html.DisplayFor(model => model.DeskQuote.CustomersName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.DeskQuote.ShippingDays)
@@ -31,28 +31,28 @@
             @Html.DisplayFor(model => model.DeskQuote.QuoteDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeskQuote.Quote)
+            @Html.DisplayNameFor(model => model.Desk.Material)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeskQuote.Quote)
+            @Html.DisplayFor(model => model.Desk.Material)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeskQuote.ShippingCost)
+            @Html.DisplayNameFor(model => model.Desk.WidthUpDown)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeskQuote.ShippingCost)
+            @Html.DisplayFor(model => model.Desk.WidthUpDown)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeskQuote.StructureCost)
+            @Html.DisplayNameFor(model => model.Desk.HeightUpDown)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeskQuote.StructureCost)
+            @Html.DisplayFor(model => model.Desk.HeightUpDown)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeskQuote.SurfaceCost)
+            @Html.DisplayNameFor(model => model.Desk.NumDrawers)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeskQuote.SurfaceCost)
+            @Html.DisplayFor(model => model.Desk.NumDrawers)
         </dd>
     </dl>
     

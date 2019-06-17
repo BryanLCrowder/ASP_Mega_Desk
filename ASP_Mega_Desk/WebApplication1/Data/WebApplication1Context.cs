@@ -16,8 +16,6 @@ namespace WebApplication1.Models
 
         public DbSet<WebApplication1.Models.Desk> Desk { get; set; }
 
-        public DbSet<WebApplication1.Models.Link> Link { get; set; }
-
         public DbSet<WebApplication1.Models.DeskQuote> DeskQuote { get; set; }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models
 {
     public class Desk
     {
         public int ID { get; set; }
+        [Display(Name = "Width")]
         public decimal WidthUpDown { get; set; }
+        [Display(Name = "Height")]
         public decimal HeightUpDown { get; set; }
+        [Display(Name = "Drawers")]
         public int NumDrawers { get; set; }
 
         public enum DeskMaterial

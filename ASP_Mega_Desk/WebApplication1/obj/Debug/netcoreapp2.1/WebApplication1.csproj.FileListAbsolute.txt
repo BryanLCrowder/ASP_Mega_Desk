@@ -30,8 +30,8 @@ B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\We
 B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.dll
 B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.pdb
 B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.csproj.CopyComplete
-B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Desk\Create.g.cshtml.cs
-B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Desk\Delete.g.cshtml.cs
-B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Desk\Details.g.cshtml.cs
-B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Desk\Edit.g.cshtml.cs
-B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Desk\Index.g.cshtml.cs
+B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Quote\Create.g.cshtml.cs
+B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Quote\Delete.g.cshtml.cs
+B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Quote\Details.g.cshtml.cs
+B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Quote\Edit.g.cshtml.cs
+B:\NewNew\ASP_Mega_Desk\ASP_Mega_Desk\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Pages\Quote\Index.g.cshtml.cs
