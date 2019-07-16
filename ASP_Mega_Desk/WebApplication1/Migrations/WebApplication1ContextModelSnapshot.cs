@@ -19,81 +19,103 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApplication1.Models.Desk", b =>
+            modelBuilder.Entity("WebApplication1.Models.Delivery", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("DeliveryID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("HeightUpDown");
+                    b.Property<int>("Days");
 
-                    b.Property<int>("Material");
+                    b.Property<string>("RushOrderDay");
+
+                    b.HasKey("DeliveryID");
+
+                    b.ToTable("Delivery");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Desk", b =>
+                {
+                    b.Property<int>("DeskID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Depth");
+
+                    b.Property<int>("MaterialID");
 
                     b.Property<int>("NumDrawers");
 
-                    b.Property<decimal>("WidthUpDown");
+                    b.Property<int>("Width");
 
-                    b.HasKey("ID");
+                    b.HasKey("DeskID");
+
+                    b.HasIndex("MaterialID");
 
                     b.ToTable("Desk");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.DeskQuote", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("DeskQuoteID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CustomerName");
 
-                    b.Property<int?>("DeskID");
+                    b.Property<int>("DeliveryID");
 
-                    b.Property<decimal>("Quote");
+                    b.Property<int>("DeskID");
+
+                    b.Property<decimal>("DeskPrice");
 
                     b.Property<DateTime>("QuoteDate");
 
                     b.Property<decimal>("ShippingCost");
 
-                    b.Property<int>("ShippingDays");
+                    b.HasKey("DeskQuoteID");
 
-                    b.Property<decimal>("StructureCost");
-
-                    b.Property<decimal>("SurfaceCost");
-
-                    b.HasKey("ID");
+                    b.HasIndex("DeliveryID");
 
                     b.HasIndex("DeskID");
 
                     b.ToTable("DeskQuote");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Link", b =>
+            modelBuilder.Entity("WebApplication1.Models.Material", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("MaterialId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DeskID");
+                    b.Property<string>("MaterialType");
 
-                    b.HasKey("ID");
+                    b.Property<decimal>("Price");
 
-                    b.HasIndex("DeskID");
+                    b.HasKey("MaterialId");
 
-                    b.ToTable("Link");
+                    b.ToTable("Material");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Desk", b =>
+                {
+                    b.HasOne("WebApplication1.Models.Material", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.DeskQuote", b =>
                 {
-                    b.HasOne("WebApplication1.Models.Desk", "Desk")
+                    b.HasOne("WebApplication1.Models.Delivery", "Delivery")
                         .WithMany()
-                        .HasForeignKey("DeskID");
-                });
+                        .HasForeignKey("DeliveryID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity("WebApplication1.Models.Link", b =>
-                {
                     b.HasOne("WebApplication1.Models.Desk", "Desk")
                         .WithMany()
-                        .HasForeignKey("DeskID");
+                        .HasForeignKey("DeskID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

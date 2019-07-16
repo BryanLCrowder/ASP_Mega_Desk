@@ -9,6 +9,7 @@ namespace WebApplication1.Models
 {
     public class WebApplication1Context : DbContext
     {
+
         public WebApplication1Context (DbContextOptions<WebApplication1Context> options)
             : base(options)
         {
@@ -17,5 +18,9 @@ namespace WebApplication1.Models
         public DbSet<WebApplication1.Models.Desk> Desk { get; set; }
 
         public DbSet<WebApplication1.Models.DeskQuote> DeskQuote { get; set; }
+
+        public DbSet<WebApplication1.Models.Material> Material { get; set; }
+
+        public DbSet<WebApplication1.Models.Delivery> Delivery { get; set; }
     }
 }

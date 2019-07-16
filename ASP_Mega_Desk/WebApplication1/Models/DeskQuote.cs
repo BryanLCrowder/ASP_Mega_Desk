@@ -1,149 +1,118 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using WebApplication1.Models;
 
 namespace WebApplication1.Models
 {
     public class DeskQuote
     {
-            //Constructor for rushOrder array calculation
-            public DeskQuote()
-            {
-                this.SetRushOrder(getRushOrder());
-            }
-        public int ID { get; set; }
+        const decimal BASE_PRICE = 200;
 
-        private int[,] rushOrder;
+        [Display(Name = "Desk Quote")]
+        public int DeskQuoteID { get; set; }
+        //link desk
 
-        public int[,] GetRushOrder()
-        {
-            return rushOrder;
-        }
+        [Display(Name = "Desk ID")]
+        public int DeskID { get; set; }
+        public Desk Desk { get; set; }
+        // link delivery 
 
-        public void SetRushOrder(int[,] value)
-        {
-            rushOrder = value;
-        }
-        [Display(Name = "Customers Name")]
-        public string CustomersName { get; set; }
-        [Display(Name = "Shipping Days")]
-        public int ShippingDays { get; set; }
+        [Display(Name = "Delivery ID")]
+        public int DeliveryID { get; set; }
+        public Delivery Delivery { get; set; }
+
+        [Display(Name = "Customer Name")]
+        public string CustomerName { get; set; }
+
         [Display(Name = "Quote Date")]
+        [DataType(DataType.Date)]
         public DateTime QuoteDate { get; set; }
 
-            public decimal Quote { get; set; }
-            public decimal ShippingCost { get; set; }
-            public decimal StructureCost { get; set; }
-            public decimal SurfaceCost { get; set; }
+        [Display(Name = "Shipping Cost")]
+        public decimal ShippingCost { get; set; }
+
+        [Display(Name = "Desk Price")]
+        public decimal DeskPrice { get; set; }
+
+    
+
+        public DeskQuote()
+        {
+
+        }
+       
+        public decimal calcshippingCost(decimal pvRushDays, decimal pvArea)
+        {
+
+            decimal shippingPrice;
 
 
-            public Desk Desk { get; set; }
-
-            public decimal GetQuote()
+            if (pvRushDays == 3)
             {
-                Quote = GetShippingCost() + GetStructureCost() + GetSurfaceCost();
-                return Quote;
-            }
-
-
-            //**GET CURRENT PRICES BASED ON .txt**//
-            public int[,] getRushOrder()
-            {
-
-                string[] rushAmount = File.ReadAllLines(@"rushOrderPrices.txt");
-                int[,] rushAmountGrid = new int[3, 3];
-                int row;
-                int column;
-                int count = 0;
-
-                for (row = 0; row < 3; row++)
+                if (pvArea < 1000)
                 {
-                    for (column = 0; column < 3; column++)
-                    {
-                        rushAmountGrid[row, column] = int.Parse(rushAmount[count]);
-                        count++;
-                    }
+                    shippingPrice = 60;
                 }
-                return rushAmountGrid;
-            }
-
-            public decimal GetShippingCost()
-            {
-                decimal size = Desk.WidthUpDown * Desk.HeightUpDown;
-                switch (ShippingDays)
+                else if (pvArea < 2001)
                 {
-                    case 3:
-                        if (size < 1000)
-                            ShippingCost = this.GetRushOrder()[0, 0];
-                        if (size > 1000 && size < 2000)
-                            ShippingCost = this.GetRushOrder()[0, 1];
-                        else if (size > 2000)
-                            ShippingCost = this.GetRushOrder()[0, 2];
-                        break;
-                    case 5:
-                        if (size < 1000)
-                            ShippingCost = this.GetRushOrder()[1, 0];
-                        if (size > 1000 && size < 2000)
-                            ShippingCost = this.GetRushOrder()[1, 1];
-                        else if (size > 2000)
-                            ShippingCost = this.GetRushOrder()[1, 2];
-                        break;
-                    case 7:
-                        if (size < 1000)
-                            ShippingCost = this.GetRushOrder()[2, 0];
-                        if (size > 1000 && size < 2000)
-                            ShippingCost = this.GetRushOrder()[2, 1];
-                        else if (size > 2000)
-                            ShippingCost = this.GetRushOrder()[2, 2];
-                        break;
-                    case 14:
-                        ShippingCost = 0;
-                        break;
-                    default:
-                        break;
+                    shippingPrice = 70;
                 }
-
-                return ShippingCost;
-            }
-
-            public decimal GetStructureCost()
-            {
-                StructureCost = (Desk.NumDrawers * 50) + 200;
-                return StructureCost;
-            }
-
-            public decimal GetSurfaceCost()
-            {
-                decimal size = Desk.WidthUpDown * Desk.HeightUpDown;
-
-                switch (Desk.Material)
-                {
-                    case Desk.DeskMaterial.Rosewood:
-                        SurfaceCost = 300;
-                        break;
-                    case Desk.DeskMaterial.Laminate:
-                        SurfaceCost = 100;
-                        break;
-                    case Desk.DeskMaterial.Veneer:
-                        SurfaceCost = 125;
-                        break;
-                    case Desk.DeskMaterial.Oak:
-                        SurfaceCost = 200;
-                        break;
-                    case Desk.DeskMaterial.Pine:
-                        SurfaceCost = 50;
-                        break;
-                    default:
-                        break;
-                }
-
-                if (size > 1000)
-                    SurfaceCost += size;
                 else
-                    SurfaceCost += 0;
-
-                return SurfaceCost;
+                {
+                    shippingPrice = 80;
+                }
             }
+            else if (pvRushDays == 5)
+            {
+                if (pvArea < 1000)
+                {
+                    shippingPrice = 40;
+                }
+                else if (pvArea < 2001)
+                {
+                    shippingPrice = 45;
+                }
+                else
+                {
+                    shippingPrice = 60;
+                }
+            }
+            else
+            {
+                if (pvArea < 1000)
+                {
+                    shippingPrice = 60;
+                }
+                else if (pvArea < 2001)
+                {
+                    shippingPrice = 70;
+                }
+                else
+                {
+                    shippingPrice = 80;
+                }
+            }
+            return shippingPrice;
+
+        }
+
+
+        //
+        // Calculate the cost of the desk
+        //
+        public decimal calcDeskPrice(decimal pvMaterialCost, decimal pvArea, decimal pvShippingCost)
+        {
+            if (pvArea < 1000)
+                return BASE_PRICE + pvShippingCost + pvMaterialCost;
+            else
+                return BASE_PRICE + pvShippingCost + pvMaterialCost + pvArea;
+
+
         }
 
     }
+
+}
